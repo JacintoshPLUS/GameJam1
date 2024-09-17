@@ -7,6 +7,7 @@ using UnityEngine;
 public class BoomerangBehaviour : MonoBehaviour
 {
     public BoomerangState state;
+    public GameObject player;
     private Rigidbody rb;
     private Vector3 StartPosition;
     public int speed;
@@ -32,21 +33,29 @@ public class BoomerangBehaviour : MonoBehaviour
         }
         if (state == BoomerangState.ReachedEnd)
         {
-            StartCoroutine(ReturnBoomerang());
+            StartCoroutine(WaitForReturn());
+            Spin();
+        }
+        if (state == BoomerangState.Returning)
+        {
+            ReturnBoomerang();
             Spin();
         }
     }
 
-    private void MoveBoomerangBack()
+    private void ReturnBoomerang()
     {
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        if(transform.position == player.transform.position)
+        {
+            state = BoomerangState.Ready;
+        }
     }
 
-    private IEnumerator ReturnBoomerang()
+    private IEnumerator WaitForReturn()
     {
         yield return new WaitForSeconds(1f);
         state = BoomerangState.Returning;
-        transform.position = Vector3.MoveTowards(transform.position, StartPosition, 10f);
-        state = BoomerangState.Ready;
     }
 
     private void Spin()
@@ -70,4 +79,5 @@ public class BoomerangBehaviour : MonoBehaviour
         state = BoomerangState.Moving;
         rb.AddForce(new Vector3(0, 0, speed), ForceMode.Impulse);
     }
+
 }
