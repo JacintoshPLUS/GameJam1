@@ -65,7 +65,10 @@ public class BoomerangBehaviour : MonoBehaviour
 
     private void StopBoomerang()
     {
-        if (transform.position.z >= StartPosition.z + range)
+        if (transform.position.z >= StartPosition.z + range 
+            || transform.position.x >= StartPosition.x + range
+            || transform.position.z <= StartPosition.z - range
+            || transform.position.x <= StartPosition.x - range)
         {
             rb.velocity = Vector3.zero;
             state = BoomerangState.ReachedEnd;
@@ -77,7 +80,7 @@ public class BoomerangBehaviour : MonoBehaviour
         Debug.Log("Boomerang thrown");
         StartPosition = transform.position;
         state = BoomerangState.Moving;
-        rb.AddForce(new Vector3(0, 0, speed), ForceMode.Impulse);
+        rb.AddForce(GameManager.Instance.playerDirection * speed, ForceMode.Impulse);
     }
 
 }
