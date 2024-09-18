@@ -166,6 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120fe80f440d19e4c9e9b5100cdacdfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
+  playerDirection: {x: 0, y: 0, z: 0}
+  playerHealth: 3
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
