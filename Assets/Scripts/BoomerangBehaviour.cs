@@ -82,5 +82,9 @@ public class BoomerangBehaviour : MonoBehaviour
         state = BoomerangState.Moving;
         rb.AddForce(GameManager.Instance.playerDirection * speed, ForceMode.Impulse);
     }
+    private void OnTriggerEnter(UnityEngine.Collider other)
+    {
+        other.GetComponent<Transform>().gameObject.GetComponent<Buttons>().Activate();
 
+    }
 }
