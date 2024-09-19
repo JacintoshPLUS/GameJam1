@@ -25,9 +25,4 @@ public class ThrowBoomerang : MonoBehaviour
             GameManager.Instance.playerHealth--;
         }
     }
-
-    private void MoveBoomerang()
-    {
-
-    }
 }

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public Vector3 playerDirection;
     public int playerHealth;
+    public Room[] rooms;
 
     // Start is called before the first frame update
     void Start()

@@ -84,7 +84,24 @@ public class BoomerangBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
-        other.GetComponent<Transform>().gameObject.GetComponent<Buttons>().Activate();
+        Debug.Log(other.name);
 
+        if(other == null || !other.transform.parent)
+            return;
+        else
+        {
+            Buttons b = other.GetComponent<Transform>().gameObject.GetComponent<Buttons>();
+            EnemyMovement e = other.transform.parent.gameObject.GetComponent<EnemyMovement>();
+
+            if (b != null)
+            {
+                b.Activate();
+                //state = BoomerangState.Returning;
+            }
+            if (e != null)
+            {
+                e.State = EnemyStates.dying;
+            }
+        }
     }
 }
