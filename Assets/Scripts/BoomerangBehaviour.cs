@@ -13,10 +13,13 @@ public class BoomerangBehaviour : MonoBehaviour
     public int speed;
     public int range;
     public int rotationSpeed;
+    public bool deadly;
+    private float waitTimer;
     void Start()
     {
         state = BoomerangState.Ready;
         rb = GetComponent<Rigidbody>();
+        waitTimer = 1f;
     }
 
     // Update is called once per frame
@@ -56,6 +59,7 @@ public class BoomerangBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         state = BoomerangState.Returning;
+        //waitTimer = 1f;
     }
 
     private void Spin()
@@ -96,12 +100,15 @@ public class BoomerangBehaviour : MonoBehaviour
             if (b != null)
             {
                 b.Activate();
-                //state = BoomerangState.Returning;
             }
             if (e != null)
             {
-                e.State = EnemyStates.dying;
+                if(deadly)
+                    e.State = EnemyStates.dying;
             }
+
+            rb.velocity = Vector3.zero;
+            state = BoomerangState.Returning;
         }
     }
 }
