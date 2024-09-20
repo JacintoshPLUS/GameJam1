@@ -24,6 +24,14 @@ public class CharacterMovementSimple : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
 
         UpdateDirection();
+
+        if (GameManager.Instance.gameState == GameStates.gameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                GameManager.Instance.RestartPuzzle();
+            }
+        }
     }
 
     private void UpdateDirection()

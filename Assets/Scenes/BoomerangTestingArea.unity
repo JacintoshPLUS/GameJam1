@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &274356410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2760346727009105647, guid: 866a23250e81f2643a81a420c995e873, type: 3}
+  m_PrefabInstance: {fileID: 1658607789498470563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409956131
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,8 +173,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   playerDirection: {x: 0, y: 0, z: 0}
-  playerHealth: 6
+  maxHealth: 6
   rooms: []
+  playerStats: {fileID: 11400000, guid: 63d2b7aea76d9544096d4980133c8ed5, type: 2}
+  player: {fileID: 274356410}
+  lastCheckpoint: {fileID: 1173416825}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +364,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
+--- !u!1 &1173416825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1173416826}
+  m_Layer: 0
+  m_Name: CheckPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1173416826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173416825}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1622394004
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,3 +567,4 @@ SceneRoots:
   - {fileID: 1622394008}
   - {fileID: 1658607789498470563}
   - {fileID: 1108775143}
+  - {fileID: 1173416826}

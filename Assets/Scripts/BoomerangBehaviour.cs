@@ -14,12 +14,12 @@ public class BoomerangBehaviour : MonoBehaviour
     public int range;
     public int rotationSpeed;
     public bool deadly;
-    private float waitTimer;
+    //private float waitTimer;
     void Start()
     {
         state = BoomerangState.Ready;
         rb = GetComponent<Rigidbody>();
-        waitTimer = 1f;
+        //waitTimer = 1f;
     }
 
     // Update is called once per frame
@@ -74,8 +74,8 @@ public class BoomerangBehaviour : MonoBehaviour
             || transform.position.z <= StartPosition.z - range
             || transform.position.x <= StartPosition.x - range)
         {
-            rb.velocity = Vector3.zero;
             state = BoomerangState.ReachedEnd;
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -106,9 +106,12 @@ public class BoomerangBehaviour : MonoBehaviour
                 if(deadly)
                     e.State = EnemyStates.dying;
             }
-
-            rb.velocity = Vector3.zero;
-            state = BoomerangState.Returning;
+            Stop();
         }
+    }
+    private void Stop()
+    {
+        rb.velocity = Vector3.zero;
+        state = BoomerangState.Returning;
     }
 }

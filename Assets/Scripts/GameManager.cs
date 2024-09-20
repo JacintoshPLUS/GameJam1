@@ -9,8 +9,12 @@ public class GameManager : MonoBehaviour
     public GameStates gameState;
 
     public Vector3 playerDirection;
-    public int playerHealth;
+    public int maxHealth;
     public Room[] rooms;
+    public Room room;
+    public PlayerStats playerStats;
+    public GameObject player;
+    public GameObject lastCheckpoint;
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +22,15 @@ public class GameManager : MonoBehaviour
         Instance = this;
         playerDirection = Vector3.forward;
         gameState = GameStates.running;
+        playerStats.currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerHealth <= 0 && gameState == GameStates.running)
+        if (playerStats.currentHealth <= 0 && gameState == GameStates.running)
             Death();
+
     }
 
     private void Death()
@@ -32,5 +38,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         gameState = GameStates.gameOver;
         Debug.Log("Game Over :(");
+    }
+
+    public void RestartPuzzle()
+    {
+        player.transform.position = lastCheckpoint.transform.position;
+        playerStats.deaths++;
+        gameState = GameStates.running;
+        Time.timeScale = 1f;
+        playerStats.currentHealth = maxHealth;
     }
 }

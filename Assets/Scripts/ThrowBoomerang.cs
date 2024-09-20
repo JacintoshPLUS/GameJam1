@@ -22,7 +22,7 @@ public class ThrowBoomerang : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && b.state == BoomerangState.Ready)
         {
             b.state = BoomerangState.Throw;
-            GameManager.Instance.playerHealth--;
+            GameManager.Instance.playerStats.currentHealth--;
         }
     }
 }
