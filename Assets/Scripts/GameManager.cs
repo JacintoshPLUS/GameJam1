@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public Vector3 playerDirection;
     public int maxHealth;
     public Room[] rooms;
-    public Room room;
+    public Room currentRoom;
     public PlayerStats playerStats;
     public GameObject player;
     public GameObject lastCheckpoint;
