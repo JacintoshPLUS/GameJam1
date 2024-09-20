@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   deaths: 0
-  lastCheckpoint: {fileID: 0}
-  maxHealth: 6
+  currentHealth: 6
