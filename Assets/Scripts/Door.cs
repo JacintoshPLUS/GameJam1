@@ -27,6 +27,8 @@ public class Door : MonoBehaviour
         {
             renderer.enabled = true;
             collider.enabled = true;
+            GameManager.Instance.mainCamera.transform.position += new Vector3(0,0,20);
+            GameManager.Instance.playerStats.currentHealth = GameManager.Instance.maxHealth;
         }
     }
 }

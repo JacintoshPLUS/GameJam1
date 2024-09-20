@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public PlayerStats playerStats;
     public GameObject player;
     public GameObject lastCheckpoint;
+    public Camera mainCamera;
 
     // Start is called before the first frame update
     void Start()
